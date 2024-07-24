@@ -1,7 +1,15 @@
-import { Box, Flex, Link, Text, Spacer } from "@chakra-ui/react";
+import React from 'react';
+import { Box, Flex, Text, Spacer } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from 'next/link';
 
-const Menu = () => {
+interface MenuProps {
+  onServicesClick: () => void;
+  onAboutClick: () => void;
+  onContactClick: () => void;
+}
+
+const Menu: React.FC<MenuProps> = ({ onServicesClick, onAboutClick, onContactClick }) => {
   return (
     <Box
       width="100%" 
@@ -16,7 +24,11 @@ const Menu = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Image src="/assets/logo.png" alt="Logo Schema" width={100} height={40} />
+        <Link href="/" passHref>
+          <Box as="a">
+            <Image src="/assets/logo.png" alt="Logo Schema" width={100} height={40} />
+          </Box>
+        </Link>
 
         <Spacer />
 
@@ -27,15 +39,15 @@ const Menu = () => {
         <Spacer />
 
         <Flex gap="10px" alignItems="center">
-          <Link href="/services" fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }}>
+          <Text onClick={onServicesClick} fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }} cursor="pointer">
             Serviços
-          </Link>
-          <Link href="/schemas" fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }}>
-            Schema
-          </Link>
-          <Link href="/contact" fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }}>
+          </Text>
+          <Text onClick={onAboutClick} fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }} cursor="pointer">
+            Quem Somos
+          </Text>
+          <Text onClick={onContactClick} fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }} cursor="pointer">
             Contatos
-          </Link>
+          </Text>
         </Flex>
       </Flex>
     </Box>

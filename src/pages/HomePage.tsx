@@ -1,4 +1,6 @@
-import React from 'react';  
+"use client";
+
+import React, { useRef } from 'react';  
 import { Box } from '@chakra-ui/react';  
 import Menu from '../components/Menu';  
 import Hero from '../components/Hero'; 
@@ -9,17 +11,36 @@ import Contact from '../components/Contact';
 import Footer from '@/components/Footer';
 import ProjectJourneySection from '@/components/ProjectJourneySection';
 
-
 const HomePage: React.FC = () => {
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Box> 
-      <Menu />
+      <Menu 
+        onServicesClick={() => scrollToSection(servicesRef)}
+        onAboutClick={() => scrollToSection(aboutRef)}
+        onContactClick={() => scrollToSection(contactRef)}
+      />
       <Hero />
-      <ServicesSection />
-      <AboutSection />
+      <div ref={servicesRef}>
+        <ServicesSection />
+      </div>
+      <div ref={aboutRef}>
+        <AboutSection />
+      </div>
       <LevelSection />
       <ProjectJourneySection />
-      <Contact />
+      <div ref={contactRef}>
+        <Contact />
+      </div>
       <Footer />
     </Box>
   );

@@ -26,7 +26,13 @@ const ContentCard: React.FC<ContentCardProps> = ({ image, title, text, isHighlig
 const WebDevelopment = () => {
   return (
     <Box width="100%" bg="#222224">
-      <Menu />
+      <Menu onServicesClick={function (): void {
+        throw new Error('Function not implemented.');
+      } } onAboutClick={function (): void {
+        throw new Error('Function not implemented.');
+      } } onContactClick={function (): void {
+        throw new Error('Function not implemented.');
+      } } />
       <Flex justifyContent="center" mt="26px">
         <Box width="calc(100% - 200px)" maxWidth="1131px">
           <SimpleGrid columns={2} spacingX="230px">

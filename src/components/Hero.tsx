@@ -5,9 +5,10 @@ const Hero: React.FC = () => {
     <Box
       height="476px"
       width="100%"
-      bgImage="url('/assets/capa.png')" 
+      bgImage="url('/assets/capa.jpg')" 
       bgRepeat="no-repeat"
       bgSize="cover"
+      bgPosition="center 70%"
     >
     </Box>
   );
