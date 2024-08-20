@@ -18,18 +18,7 @@ const LevelSection = () => {
           PREPARE-SE PARA SUBIR DE NÍVEL
         </Text>
         <Link href="/level-up" passHref>
-          <Button
-            as="a"
-            variant="outline"
-            borderColor="white"
-            color="white"
-            width="119px"
-            height="40px"
-            _hover={{ bg: "transparent", borderColor: 'white' }}
-            backgroundColor="transparent"
-          >
-            Saiba Mais
-          </Button>
+          Saiba Mais
         </Link>
       </Flex>
 

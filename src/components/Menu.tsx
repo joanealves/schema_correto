@@ -4,11 +4,10 @@ import Image from "next/image";
 import Link from 'next/link';
 
 interface MenuProps {
-  onServicesClick: () => void;
-  onAboutClick: () => void;
-  onContactClick: () => void;
+  onServicesClick?: () => void;
+  onAboutClick?: () => void;
+  onContactClick?: () => void;
 }
-
 const Menu: React.FC<MenuProps> = ({ onServicesClick, onAboutClick, onContactClick }) => {
   return (
     <Box

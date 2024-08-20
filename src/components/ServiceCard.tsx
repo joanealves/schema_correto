@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
-import Link from 'next/link';
 import { IconType } from 'react-icons';
+import { useRouter } from 'next/router';
 
 interface ServiceCardProps {
   color: string;
@@ -11,8 +11,17 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ color, title, Icon, href }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (href) {
+      router.push(href);
+    }
+  };
+
   return (
     <Box
+      as={href ? 'button' : 'div'}
       width="full"
       height="345px"
       bg={`${color}99`}
@@ -27,32 +36,33 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ color, title, Icon, href }) =
         transform: "translateY(-10px)",
         boxShadow: "0 4px 20px rgba(0,0,0,0.5)"
       }}
+      cursor={href ? 'pointer' : 'default'}
+      onClick={handleClick}
+      border="none"
+      textAlign="center"
     >
       <Icon size="60px" color="white" />
       <Text fontSize="lg" color="white" fontWeight="bold" mt="10px">
         {title}
       </Text>
       {href && (
-        <Link href={href} passHref>
-          <Button
-            as="a"
-            mt="10px"
-            variant="outline"
-            borderColor="white !important" 
-            color="white"
-            width="119px"
-            height="40px"
-            _hover={{
-              bg: "transparent", 
-              borderColor: 'white !important' 
-            }}
-            border="2px solid white !important" 
-            borderRadius="6px"
-            backgroundColor="transparent"
-          >
-            Saiba Mais
-          </Button>
-        </Link>
+        <Button
+          mt="10px"
+          variant="outline"
+          borderColor="white !important" 
+          color="white"
+          width="119px"
+          height="40px"
+          _hover={{
+            bg: "transparent", 
+            borderColor: 'white !important' 
+          }}
+          border="2px solid white !important" 
+          borderRadius="6px"
+          backgroundColor="transparent"
+        >
+          Saiba Mais
+        </Button>
       )}
     </Box>
   );
