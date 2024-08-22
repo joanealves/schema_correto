@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 
 interface ServiceCardProps {
   color: string;
@@ -21,7 +21,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ color, title, Icon, href }) =
 
   return (
     <Box
-      as={href ? 'button' : 'div'}
       width="full"
       height="345px"
       bg={`${color}99`}
@@ -30,14 +29,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ color, title, Icon, href }) =
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      padding="20px"
+      p="20px"
       transition="transform 0.3s ease, box-shadow 0.3s ease"
       _hover={{
         transform: "translateY(-10px)",
         boxShadow: "0 4px 20px rgba(0,0,0,0.5)"
       }}
-      cursor={href ? 'pointer' : 'default'}
-      onClick={handleClick}
       border="none"
       textAlign="center"
     >
@@ -59,7 +56,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ color, title, Icon, href }) =
           }}
           border="2px solid white !important" 
           borderRadius="6px"
-          backgroundColor="transparent"
+          bg="transparent"
+          cursor="pointer"
+          onClick={handleClick}
         >
           Saiba Mais
         </Button>

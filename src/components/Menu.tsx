@@ -45,7 +45,7 @@ const Menu: React.FC<MenuProps> = ({ onServicesClick, onAboutClick, onContactCli
             Quem Somos
           </Text>
           <Text onClick={onContactClick} fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }} cursor="pointer">
-            Contatos
+            Fale conosco
           </Text>
         </Flex>
       </Flex>

@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
           color="white"
           position="relative"
         >
-          <Text fontSize="24px" fontWeight="bold" ml={16} mb={4}>Fale com a gente!</Text>
+          <Text fontSize="24px" fontWeight="bold" ml={16} mb={4}>Fale conosco!</Text>
           <Text fontSize="16px" ml={16} mb={13}>Atendimento especializado.</Text>
           <VStack align="start" mt={113} ml={16} spacing={50}>
             <HStack spacing={25}>
