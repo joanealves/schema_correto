@@ -24,19 +24,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ color, title, Icon, href }) =
       width="full"
       height="345px"
       bg={`${color}99`}
-      borderRadius="md"
+      borderRadius="6px"  
       display="flex"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
       p="20px"
-      transition="transform 0.3s ease, box-shadow 0.3s ease"
+      transition="transform 0.4s ease, box-shadow 0.4s ease"
       _hover={{
-        transform: "translateY(-10px)",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.5)"
+        transform: "translateY(-8px) rotate(0.5deg) scale(1.02)",  
+        boxShadow: "0 12px 24px rgba(0, 0, 0, 0.2)" 
       }}
       border="none"
       textAlign="center"
+      mb="2px"  
+      mx="2px"  
     >
       <Icon size="60px" color="white" />
       <Text fontSize="lg" color="white" fontWeight="bold" mt="10px">

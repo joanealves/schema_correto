@@ -4,18 +4,24 @@ import Menu from '@/components/Menu';
 import Contact from '../components/Contact'; 
 import Footer from '../components/Footer';
 import ERPSection from '@/components/ERPSection';
+import WhatsappButton from '@/components/WhatsappButton';
 
 interface ContentCardProps {
-  image: string;
+  image?: string;
   text: string;
   isHighlight?: boolean; 
 }
 
 const ContentCard: React.FC<ContentCardProps> = ({ image, text, isHighlight }) => {
   return (
-    <Box>
-      <Image src={image} alt="logo erp" boxSize="60px" mb="36px" />
-      <Text fontSize="sm" color={isHighlight ? '25548A' : 'FFF'} textAlign="left">
+    <Box p="16px" borderRadius="8px" bg="white">
+      {image && <Image src={image} alt="logo erp" boxSize="60px" mb="36px" />}
+      <Text
+        fontSize="sm"
+        color={isHighlight ? '#25548A' : 'gray.600'}
+        fontWeight={isHighlight ? 'bold' : 'normal'}
+        textAlign="left"
+      >
         {text}
       </Text>
     </Box>
@@ -24,38 +30,39 @@ const ContentCard: React.FC<ContentCardProps> = ({ image, text, isHighlight }) =
 
 const ERPDevelopment = () => {
   return (
-    <Box width="100%" bg="#222224">
-      {/* <Menu /> */}
+    <Box width="100%" bg="white">
+      <Menu />
+      <Box width="100%" height="auto">
+        <Image src="/assets/capa_erp.png" alt="Imagem da Capa ERP" width="100%" height="auto" />
+      </Box>
       <Flex justifyContent="center" mt="26px">
         <Box width="calc(100% - 200px)" maxWidth="1131px">
           <SimpleGrid columns={2} spacingX="230px">
             <VStack spacing="26px">
               <ContentCard
-                image="/path/to/erp/image1.jpg"
-                text="Análise e Consultoria Especializada: Compreendemos a importância de um sistema ERP alinhado com seus objetivos. Nossa equipe conduz uma análise detalhada para garantir que cada funcionalidade seja projetada para impulsionar a eficiência e a produtividade."
+                image="/assets/erp_talk.png"
+                text="Análise e Consultoria Especializada."
               />
               <ContentCard
-                image="/path/to/erp/image2.jpg"
-                text="Integração sem Complicações: Nossos sistemas de ERP são projetados para se integrar perfeitamente com seus processos existentes. Dessa forma, a transição para o novo sistema é suave e sem interrupções."
+                image="/assets/erp_colaborate.png"
+                text="Integração sem Complicações."
               />
               <ContentCard
-                image="/path/to/erp/image3.jpg"
-                text="Segurança e Conformidade: Priorizamos a segurança dos dados do seu negócio. Implementamos as mais recentes medidas de segurança para proteger suas informações e garantir a conformidade com as regulamentações vigentes."
+                image="/assets/seguranca.jpg"
+                text="Segurança e Conformidade."
               />
             </VStack>
             <VStack spacing="26px">
               <ContentCard
-                image="/path/to/erp/image4.jpg"
-                text="Personalização Abrangente: Não acreditamos em soluções tamanho único. Desenvolvemos cada aspecto do seu ERP de acordo com as necessidades exclusivas do seu negócio, garantindo que cada funcionalidade atenda aos seus requisitos."
+                image="/assets/erp_config.png"
+                text="Personalização Abrangente."
               />
               <ContentCard
-                image="/path/to/erp/image5.jpg"
-                text="Treinamento Especializado e Suporte Contínuo: Oferecemos treinamento abrangente para garantir que sua equipe esteja totalmente capacitada a utilizar todas as funcionalidades do sistema. Além disso, nosso suporte técnico está disponível para ajudá-lo a qualquer momento."
+                image="/assets/erp_mensagem.png"
+                text="Treinamento Especializado e Suporte Contínuo."
               />
               <ContentCard
-                image="/path/to/erp/image6.jpg"
-                text="Potencialize seu Negócio com um ERP personalizado sob medida.
-                    Destaque-se no seu setor com nosso ERP personalizado, desenhado para se adaptar exclusivamente às necessidades da sua empresa. Ganhe controle total sobre finanças, operações e recursos humanos, obtendo uma visão estratégica e precisa do seu negócio."
+                text="Potencialize seu Negócio com um ERP personalizado."
                 isHighlight={true}
               />
             </VStack>
@@ -64,6 +71,7 @@ const ERPDevelopment = () => {
       </Flex>
       <ERPSection />
       <Contact />
+      <WhatsappButton />
       <Footer />
     </Box>
   );

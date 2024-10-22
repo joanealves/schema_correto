@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text, Spacer } from "@chakra-ui/react";
-import Image from "next/image";
+import { Box, Flex, Text, Spacer, Button } from "@chakra-ui/react";
 import Link from 'next/link';
 
 interface MenuProps {
@@ -8,13 +7,18 @@ interface MenuProps {
   onAboutClick?: () => void;
   onContactClick?: () => void;
 }
+
 const Menu: React.FC<MenuProps> = ({ onServicesClick, onAboutClick, onContactClick }) => {
   return (
     <Box
       width="100%" 
       padding="0 20px"
       fontFamily="'Quicksand', sans-serif"
-      boxShadow="0px 4px 2px -2px gray"
+      position="fixed"           
+      top="0"                   
+      zIndex="1000"             
+      backgroundColor="#222224"  
+      boxSizing="border-box"
     >
       <Flex
         maxWidth="1390px"
@@ -24,8 +28,8 @@ const Menu: React.FC<MenuProps> = ({ onServicesClick, onAboutClick, onContactCli
         alignItems="center"
       >
         <Link href="/" passHref>
-          <Box as="a">
-            <Image src="/assets/logo.png" alt="Logo Schema" width={100} height={40} />
+          <Box cursor="pointer">
+            <img src="/assets/logo.png" alt="Logo Schema" style={{ width: '100px', height: '40px' }} />
           </Box>
         </Link>
 
@@ -38,15 +42,41 @@ const Menu: React.FC<MenuProps> = ({ onServicesClick, onAboutClick, onContactCli
         <Spacer />
 
         <Flex gap="10px" alignItems="center">
-          <Text onClick={onServicesClick} fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }} cursor="pointer">
+          <Text 
+            onClick={onServicesClick} 
+            fontSize="18px" 
+            color="#EF3E66" 
+            _hover={{ color: "#FFFF" }} 
+            cursor="pointer"
+          >
             Serviços
           </Text>
-          <Text onClick={onAboutClick} fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }} cursor="pointer">
+          <Text 
+            onClick={onAboutClick} 
+            fontSize="18px" 
+            color="#EF3E66" 
+            _hover={{ color: "#FFFF" }} 
+            cursor="pointer"
+          >
             Quem Somos
           </Text>
-          <Text onClick={onContactClick} fontSize="18px" color="#EF3E66" _hover={{ color: "#FFFF" }} cursor="pointer">
-            Fale conosco
-          </Text>
+          <Button
+            mt="10px"
+            mb="6px"
+            variant="outline"
+            borderColor="white" 
+            color="white"
+            width="119px"
+            height="40px"
+            _hover={{ color: "#EF3E66" }} 
+            border="2px solid white" 
+            borderRadius="6px"
+            bg="transparent"
+            cursor="pointer"
+            onClick={onContactClick}
+          >
+            Fale Conosco
+          </Button>
         </Flex>
       </Flex>
     </Box>

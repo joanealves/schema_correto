@@ -10,6 +10,7 @@ import AboutSection from '@/components/AboutSection';
 import Contact from '../components/Contact'; 
 import Footer from '@/components/Footer';
 import ProjectJourneySection from '@/components/ProjectJourneySection';
+import WhatsappButton from '@/components/WhatsappButton';
 
 const HomePage: React.FC = () => {
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <Box> 
+    <Box width="100%" minHeight="100vh">
       <Menu 
         onServicesClick={() => scrollToSection(servicesRef)}
         onAboutClick={() => scrollToSection(aboutRef)}
@@ -38,6 +39,7 @@ const HomePage: React.FC = () => {
       </div>
       <LevelSection />
       <ProjectJourneySection />
+      <WhatsappButton />
       <div ref={contactRef}>
         <Contact />
       </div>

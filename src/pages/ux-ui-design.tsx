@@ -1,9 +1,13 @@
-import React, { useRef } from 'react';
-import { Box, Flex, SimpleGrid, Image, Text, VStack } from '@chakra-ui/react';
+"use client";
+
+import React, { useEffect, useState, useRef } from 'react';
+import { Box, Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react';
 import Menu from '@/components/Menu';
 import Contact from '../components/Contact'; 
 import Footer from '../components/Footer';
-import DesignSection from '../components/DesignSection';
+import DesignSection from '@/components/DesignSection';
+import WhatsappButton from '@/components/WhatsappButton';
+import Image from 'next/image'; // Importando Image do Next.js
 
 interface ContentCardProps {
   image: string;
@@ -13,9 +17,11 @@ interface ContentCardProps {
 
 const ContentCard: React.FC<ContentCardProps> = ({ image, text, isHighlight }) => {
   return (
-    <Box>
-      <Image src={image} alt="logo erp" boxSize="60px" mb="36px" />
-      <Text fontSize="sm" color={isHighlight ? '25548A' : 'FFF'} textAlign="left">
+    <Box width="100%" p={0} m={0}>
+      <Box position="relative" width="60px" height="60px" mb="36px">
+        <Image src={image} alt="logo ux" layout="fill" objectFit="cover" />
+      </Box>
+      <Text fontSize="sm" color={isHighlight ? '#25548A' : '#FFF'} textAlign="left">
         {text}
       </Text>
     </Box>
@@ -23,9 +29,14 @@ const ContentCard: React.FC<ContentCardProps> = ({ image, text, isHighlight }) =
 };
 
 const UXDevelopment: React.FC = () => {
+  const [hydrated, setHydrated] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
     if (sectionRef.current) {
@@ -33,52 +44,66 @@ const UXDevelopment: React.FC = () => {
     }
   };
 
+  if (!hydrated) return null;
+
   return (
-    <Box width="100%" bg="#222224">
-      {/* <Menu 
+    <Box width="100%" minHeight="100vh" bg="#222224" boxSizing="border-box">
+      <Menu 
         onServicesClick={() => scrollToSection(servicesRef)}
         onAboutClick={() => scrollToSection(aboutRef)}
         onContactClick={() => scrollToSection(contactRef)}
-      /> */}
-      <Flex justifyContent="center" mt="26px">
-        <Box width="calc(100% - 200px)" maxWidth="1131px">
+      />
+      
+      {/* Imagem da capa */}
+      <Box position="relative" width="100%" height="400px" boxSizing="border-box">
+        <Image src="/assets/capa_ux.png" alt="Imagem da Capa UX" layout="fill" objectFit="cover" />
+      </Box>
+
+      {/* Conteúdo principal */}
+      <Flex justifyContent="center" mt="26px" width="100%">
+        <Box width="100%" maxWidth="1131px">
           <SimpleGrid columns={2} spacingX="230px">
             <VStack spacing="26px">
               <ContentCard
-                image="/path/to/erp/image1.jpg"
-                text="Pesquisa e Análise Aprofundada: Compreendemos a importância de conhecer profundamente o seu público-alvo. Realizamos pesquisas detalhadas para garantir que cada aspecto do design seja orientado pelo comportamento e necessidades dos usuários."
+                image="/assets/erp/image1.jpg"
+                text="Pesquisa e Análise Aprofundada."
               />
               <ContentCard
-                image="/path/to/erp/image2.jpg"
-                text="Prototipagem e Testes Iterativos: Utilizamos prototipagem rápida e testes contínuos para refinar e aprimorar o design, garantindo que o produto final atenda às expectativas e necessidades dos usuários."
+                image="/assets/erp/image2.jpg"
+                text="Prototipagem e Testes Iterativos."
               />
               <ContentCard
-                image="/path/to/erp/image3.jpg"
-                text="Avaliação de Usabilidade e Melhoria Contínua: Após o lançamento, continuamos a monitorar e avaliar a usabilidade, implementando melhorias conforme necessário para garantir uma experiência sempre aprimorada."
+                image="/assets/erp/image3.jpg"
+                text="Avaliação de Usabilidade e Melhoria Contínua."
               />
             </VStack>
             <VStack spacing="26px">
               <ContentCard
-                image="/path/to/erp/image4.jpg"
-                text="Design Centrado no Usuário: Cada elemento do nosso design é criado com o usuário em mente. Desde a navegação até a interface, cada detalhe é projetado para proporcionar uma experiência intuitiva e envolvente."
+                image="/assets/erp/image4.jpg"
+                text="Design Centrado no Usuário."
               />
               <ContentCard
-                image="/path/to/erp/image5.jpg"
-                text="Treinamento Especializado e Suporte Contínuo: Oferecemos treinamento abrangente para garantir que sua equipe esteja totalmente capacitada a utilizar todas as funcionalidades do sistema. Além disso, nosso suporte técnico está disponível para ajudá-lo a qualquer momento."
+                image="/assets/erp/image5.jpg"
+                text="Treinamento Especializado e Suporte Contínuo."
               />
               <ContentCard
-                image="/path/to/erp/image6.jpg"
-                text="Nossos especialistas em UX estão prontos para mergulhar no mundo dos seus usuários, entendendo suas necessidades, desejos e comportamentos.Com base nesses insights, criamos interfaces intuitivas e agradáveis que garantem a satisfação e a fidelidadedo usuário."
+                image="/assets/erp/image6.jpg"
+                text="Interfaces intuitivas e agradáveis para fidelizar o usuário."
                 isHighlight={true}
               />
             </VStack>
           </SimpleGrid>
         </Box>
       </Flex>
+
       <DesignSection />
+      <WhatsappButton />
+
+      {/* Seção de contato */}
       <div ref={contactRef}>
         <Contact />
       </div>
+
       <Footer />
     </Box>
   );

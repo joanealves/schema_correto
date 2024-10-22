@@ -1,86 +1,107 @@
-"use client";
-
 import React from 'react';
-import { Box, Flex, SimpleGrid, Image, Text, VStack } from '@chakra-ui/react';
-import Menu from '@/components/Menu';
-import Contact from '../components/Contact'; 
-import Footer from '../components/Footer';
-import WebSection from '@/components/WebSection';
+import { Box, Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import Image from 'next/image'; // Certifique-se de importar o Image do next/image
+import Menu from '@/components/Menu'; // Importar o menu corretamente
+import Footer from '@/components/Footer'; // Importar o footer corretamente
+import WebSection from '@/components/WebSection'; // Adicionando a WebSection
+import WhatsappButton from '@/components/WhatsappButton'; // Adicionando o botão do WhatsApp
+import Contact from '@/components/Contact'; // Adicionando a seção de contato
 
-interface ContentCardProps {
-  image: string;
-  title: string;
-  text: string;
-  isHighlight?: boolean; 
-}
-
-// const ContentCard: React.FC<ContentCardProps> = ({ image, title, text, isHighlight }) => {
-//   return (
-//     <Box>
-//       <Image src={image} alt={title} boxSize="60px" mb="36px" />
-//       <Text fontSize="sm" color={isHighlight ? 'EF3E66' : 'FFF'} textAlign="left">
-//         {text}
-//       </Text>
-//     </Box>
-//   );
-// };
+// Definir o componente ContentCard para mostrar os cards de conteúdo
+const ContentCard: React.FC<{ image: string; title: string; text: string; isHighlight?: boolean }> = ({
+  image,
+  title,
+  text,
+  isHighlight,
+}) => {
+  return (
+    <Box>
+      <Image
+        src={image}
+        alt={title}
+        width={60}
+        height={60}
+        style={{ width: '60px', height: '60px', marginBottom: '36px' }}
+      />
+      <Text fontSize="sm" color={isHighlight ? '#E75475' : '#FFF'} textAlign="left">
+        {text}
+      </Text>
+    </Box>
+  );
+};
 
 const WebDevelopment = () => {
   return (
-    <Box width="100%" bg="#222224">
-      {/* <Menu onServicesClick={function (): void {
-        throw new Error('Function not implemented.');
-      } } onAboutClick={function (): void {
-        throw new Error('Function not implemented.');
-      } } onContactClick={function (): void {
-        throw new Error('Function not implemented.');
-      } } /> */}
-      {/* <Flex justifyContent="center" mt="26px">
+    <Box width="100%" bg="#222224" minHeight="100vh">
+      {/* Menu */}
+      <Menu />
+
+      {/* Imagem da capa */}
+      <Box width="100%" height="auto">
+        <Image
+          src="/assets/develop.webp" 
+          alt="Imagem da Capa"
+          width={1600}
+          height={856}
+          style={{ width: '100%', height: 'auto' }} // Garante que a imagem seja responsiva
+        />
+      </Box>
+
+      {/* Conteúdo da página */}
+      <Flex justifyContent="center" mt="26px">
         <Box width="calc(100% - 200px)" maxWidth="1131px">
-          <SimpleGrid columns={2} spacingX="230px">
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacingX={{ base: '20px', md: '230px' }} spacingY="26px">
             <VStack spacing="26px">
               <ContentCard
-                image="/path/to/image1.jpg"
+                image="/assets/image1.jpg"
                 title="Design Distinto e Personalizado"
-                text="Cada site e landing page que criamos é único e alinhado com a identidade visual da sua marca. Garantimos uma aparência deslumbrante e impactante."
+                text="Cada site e landing page que criamos é único e alinhado com a identidade visual da sua marca."
               />
               <ContentCard
-                image="/path/to/image2.jpg"
+                image="/assets/image2.jpg"
                 title="Responsividade em Todos os Dispositivos"
-                text="Seu site ou landing page será perfeitamente funcional em desktops, tablets e smartphones, garantindo uma experiência consistente em qualquer dispositivo."
+                text="Seu site ou landing page será perfeitamente funcional em desktops, tablets e smartphones."
               />
               <ContentCard
-                image="/path/to/image3.jpg"
+                image="/assets/image3.jpg"
                 title="Manutenção e Suporte Contínuos"
-                text="Fornecemos suporte técnico contínuo e atualizações regulares para garantir que seu site ou landing page esteja sempre funcionando com desempenho máximo."
+                text="Fornecemos suporte técnico contínuo e atualizações regulares."
               />
             </VStack>
             <VStack spacing="26px">
               <ContentCard
-                image="/path/to/image4.jpg"
+                image="/assets/image4.jpg"
                 title="Foco na Conversão e Usabilidade"
-                text="Priorizamos a usabilidade e a experiência do usuário para garantir que seus visitantes se convertam em clientes. Cada elemento é estrategicamente posicionado para maximizar a eficácia."
+                text="Priorizamos a usabilidade e a experiência do usuário."
               />
               <ContentCard
-                image="/path/to/image5.jpg"
+                image="/assets/image5.jpg"
                 title="Integração com Ferramentas Essenciais"
-                text="Integramos funcionalidades essenciais, como formulários de contato, botões de chamada para ação e sistemas de gerenciamento de conteúdo, para garantir que seu site funcione perfeitamente."
+                text="Integramos funcionalidades essenciais como formulários de contato."
               />
               <ContentCard
-                image="/path/to/image6.jpg"
-                title="Elevando Sua Presença Online com Sites e Landing Pages Incríveis"
-                text="Na Schema, estamos empenhados em criar presenças online que não apenas impressionam, mas também convertem. Nossa equipe de especialistas em design e desenvolvimento está pronta para transformar sua visão em realidade."
-                isHighlight={true}
+                image="/assets/image6.jpg"
+                title="Elevando Sua Presença Online com Sites Incríveis"
+                text="Nossa equipe de especialistas em design e desenvolvimento está pronta para transformar sua visão em realidade."
+                isHighlight
               />
             </VStack>
           </SimpleGrid>
         </Box>
-      </Flex> */}
-      <WebSection/>
+      </Flex>
+
+      {/* WebSection */}
+      <WebSection />
+
+      {/* Botão do WhatsApp */}
+      <WhatsappButton />
+
+      {/* Seção de contato */}
       <Contact />
+
+      {/* Footer */}
       <Footer />
     </Box>
-    
   );
 };
 

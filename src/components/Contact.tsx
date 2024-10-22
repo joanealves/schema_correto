@@ -50,12 +50,12 @@ const Contact: React.FC = () => {
             </HStack>
           </VStack>
           <Box position="absolute" bottom="10px" right="10px">
-            <Image 
+          <Image 
               src="/assets/esferas_azuis.png" 
               alt="Decorative Image" 
               width={283} 
               height={209}
-              layout="fixed"
+              style={{ objectFit: 'cover' }}
             />
           </Box>
         </Box>
@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
           </FormControl>
           <Button 
             mt={4} 
-            bg="pink.500"
+            bg="#9D334B"
             color="white"
             width="146px"  
             height="60px"  

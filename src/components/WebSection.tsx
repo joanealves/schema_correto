@@ -1,35 +1,37 @@
 import React from 'react';
-import { Box, Flex, Text, Image } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
+import Image from 'next/image'; 
 
 const WebSection = () => {
   return (
     <Box width="100%" height="246px" bg="#EF3E66" display="flex" justifyContent="center" alignItems="center">
       <Flex
-        width="calc(100% - 160px)" 
-        maxW="1200px" 
+        width="100%"  
         align="center"
-        justify="space-between" 
-        height="full"
+        justify="space-between"
+        height="100%"
       >
         <Text
           color="#FFF"
           fontSize="lg"
           textAlign="justify"
-          width="737px"
-          height="156px"
-          lineHeight="tall" 
+          width="100%"  
+          maxWidth="737px"  
+          lineHeight="tall"
           display="flex"
-          alignItems="center" 
+          alignItems="center"
         >
-          Na Schema, estamos comprometidos em fornecer soluções de Web Development de alta qualidade e sob medida para atender às necessidades específicas do seu negócio. Nossa equipe de especialistas está pronta para oferecer um sistema de gestão de conteúdo integrado que revolucionará a maneira como você opera online.
+          Na Schema, estamos comprometidos em fornecer soluções de Desenvolvimento web de alta qualidade e sob medida para atender às necessidades específicas do seu negócio. Nossa equipe de especialistas está pronta para oferecer um sistema de gestão de conteúdo integrado que revolucionará a maneira como você opera online.
         </Text>
-        <Image
-          src="/path/to/your/right-image.jpg" 
-          alt="Web Development Image"
-          width="429px"
-          height="208px"
-          ml="64px"
-        />
+        
+        <Box position="relative" width="429px" height="208px" ml="64px">
+          <Image
+            src="/public/assets/mobile.png" 
+            alt="Web Development Image"
+            layout="fill" 
+            objectFit="cover"  
+          />
+        </Box>
       </Flex>
     </Box>
   );

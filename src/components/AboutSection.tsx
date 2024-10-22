@@ -1,4 +1,5 @@
-import { Box, Text, Image, Flex } from '@chakra-ui/react';
+import { Box, Text, Flex } from '@chakra-ui/react';
+import Image from 'next/image';
 
 const AboutSection = () => {
   return (
@@ -20,13 +21,17 @@ const AboutSection = () => {
           Do design ao desenvolvimento, cuidamos de cada detalhe.
         </Text>
       </Box>
-      <Image
-        src="/assets/equipe.png"
-        height="200px"
-        objectFit="cover"
-        marginLeft="24px"
-        marginRight="340px" 
-      />
+      <Box position="relative" width="200px" height="200px" ml="24px" mr="340px">
+        <Image
+          src="/assets/equipe.png"
+          alt="Equipe da Schema" 
+          fill
+          sizes="(max-width: 768px) 100vw,             
+                 (max-width: 1200px) 50vw,            
+                 33vw"                               
+          style={{ objectFit: 'cover' }}
+        />
+      </Box>
     </Flex>
   );
 };
